@@ -1,3 +1,14 @@
+import { useContext } from "react";
+import { GlobalContext } from "../../context/GlobalContext";
+import RecipeItem from "../../components/recipe-item";
+
 export default function Favorites() {
-  return <div>Favorites</div>;
+  const { favorites, setFavorites } = useContext(GlobalContext);
+  return (
+    <div className="container flex flex-wrap gap-5">
+      {favorites.map((favorite) => {
+        return <RecipeItem key={favorite.recipe.id} item={favorite.recipe} />;
+      })}
+    </div>
+  );
 }
